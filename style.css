@@ -1,0 +1,326 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-soft: #f6f7fb;
+  --fg: #14141c;
+  --muted: #63636f;
+  --accent: #3654e0;
+  --accent-soft: #eef1ff;
+  --border: #e6e6ec;
+  --card-bg: #ffffff;
+  --shadow: 0 1px 2px rgba(20, 20, 28, 0.04), 0 8px 24px rgba(20, 20, 28, 0.06);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+}
+a { color: var(--accent); }
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  padding: 1rem 1.5rem;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav .brand {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--fg);
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+.nav ul a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  position: relative;
+  padding-bottom: 0.15rem;
+  transition: color 0.15s ease;
+}
+.nav ul a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: right 0.2s ease;
+}
+.nav ul a.active { color: var(--fg); }
+.nav ul a.active::after { right: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .nav ul a:hover { color: var(--fg); }
+  .nav ul a:hover::after { right: 0; }
+}
+
+.hero {
+  padding: 4.5rem 1.5rem 3.5rem;
+  text-align: center;
+  background:
+    radial-gradient(60% 60% at 50% 0%, var(--accent-soft), transparent 70%);
+}
+.hero .eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+.hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  letter-spacing: -0.01em;
+}
+.hero p {
+  margin: 0 auto;
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+section {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 4rem;
+}
+section:first-of-type { border-top: none; }
+.section-head {
+  margin-bottom: 1.75rem;
+}
+.section-head .label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+.section-head h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+section > p,
+section > ul,
+section > ol { max-width: 42rem; }
+section ul,
+section ol { padding-left: 1.2rem; }
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+.card > :first-child { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+.card + p { margin-top: 1.75rem; }
+.contact-mail {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.contact-mail:hover { text-decoration: underline; }
+
+.faq {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.faq li {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+}
+.faq h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+}
+.faq p,
+.faq ul {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+/* プライバシーポリシー本文 */
+.policy {
+  padding: 3rem 0 3.5rem;
+}
+.policy h2 {
+  margin: 2.75rem 0 0.75rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 4rem;
+}
+.policy h2:first-of-type {
+  margin-top: 1.5rem;
+}
+.policy h3 {
+  margin: 1.75rem 0 0.4rem;
+  font-size: 1rem;
+}
+.policy p,
+.policy ul {
+  max-width: 46rem;
+  margin: 0.6rem 0;
+}
+.policy ul { padding-left: 1.2rem; }
+.policy .date {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.table-wrap {
+  margin: 1rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+th,
+td {
+  padding: 0.8rem 1rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  border-top: none;
+  background: var(--bg-soft);
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+tbody th {
+  width: 11rem;
+  font-weight: 600;
+}
+
+dl.profile {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  row-gap: 0.9rem;
+  column-gap: 1.5rem;
+  font-size: 0.95rem;
+}
+dl.profile dt { color: var(--muted); }
+dl.profile dd { margin: 0; }
+dl.profile a { text-decoration: none; }
+dl.profile a:hover { text-decoration: underline; }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+footer nav {
+  margin-bottom: 0.75rem;
+}
+footer nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin: 0 0.6rem;
+}
+footer nav a:hover { color: var(--fg); }
+
+@media (max-width: 640px) {
+  .nav {
+    justify-content: flex-start;
+    padding: 0.9rem 1.25rem;
+  }
+  .nav ul {
+    gap: 0.4rem 1rem;
+  }
+  .hero {
+    padding: 3.5rem 1.25rem 3rem;
+  }
+  main {
+    padding: 0 1.25rem;
+  }
+  section {
+    padding: 2.5rem 0;
+  }
+  .policy {
+    padding: 2rem 0 2.5rem;
+  }
+  tbody th {
+    width: 7.5rem;
+  }
+  dl.profile {
+    grid-template-columns: 1fr;
+    row-gap: 0.3rem;
+  }
+  dl.profile dt {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+  }
+  dl.profile dt:first-child {
+    margin-top: 0;
+  }
+}
+
+/* アプリ内 WebView 用(?embed=1): 本文だけを表示する */
+.embed .nav,
+.embed .hero,
+.embed footer {
+  display: none;
+}
+.embed .policy {
+  padding: 0.5rem 0 1.5rem;
+}
+.embed .policy h2:first-of-type {
+  margin-top: 0.5rem;
+  padding-top: 0;
+  border-top: none;
+}
